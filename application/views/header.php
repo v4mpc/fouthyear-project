@@ -3,6 +3,7 @@
 <head>
   <title>JPAIS</title>
   <meta charset="utf-8">
+  <link rel="icon" href="<?php echo $base."/".$favicon;?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo $base."/".$bootstrapCss;?>">
   <script src="<?php echo $base."/".$jquery ?>"></script>
@@ -196,6 +197,25 @@
         font-size: 150px;
     }
   }
+
+
+
+  #icon{
+    text-shadow: 0px 0px rgb(176, 177, 179), 1px 1px rgb(181, 181, 183), 2px 2px rgb(185, 186, 187), 3px 3px rgb(189, 190, 191), 4px 4px rgb(193, 194, 195), 5px 5px rgb(197, 198, 200), 6px 6px rgb(202, 202, 204), 7px 7px rgb(206, 207, 208), 8px 8px rgb(210, 211, 212), 9px 9px rgb(214, 215, 217), 10px 10px rgb(218, 219, 221), 11px 11px rgb(223, 223, 225), 12px 12px rgb(227, 228, 230), 13px 13px rgb(231, 232, 234), 14px 14px rgb(235, 236, 238), 15px 15px rgb(239, 240, 242), 16px 16px rgb(244, 245, 247), 17px 17px rgb(248, 249, 251);
+  font-size: 113px;
+  color: rgb(79, 179, 255);
+  background-color: rgb(252, 253, 255);
+  height: 120px;
+  width: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+
+
   </style>
 
 
@@ -249,18 +269,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="">Logo</a>
+      <a class="navbar-brand" href=""><p id="icon">J</p></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about" data-toggle="modal" data-target="#myModal2">Login</a></li>
-        <li><a href="#services" data-toggle="modal" data-target="#myModal" >Register Jobseeker</a></li>
-        <li><a href="#portfolio" data-toggle="modal" data-target="#myModal1">Register Employer</a></li>
-        <li><a href="<?php echo site_url('/home/aboutPage');?>">About</a></li>
-        <li><a <a href="<?php echo site_url('home/contactPage');?>">Contact</a></li>
-
+        <li><a href="#a" data-toggle="modal" data-target="#myModal2">Login</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" >Register Jobseeker</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal1">Register Employer</a></li>
+        <li><a href="<?php echo base_url();?>home/aboutPage">About</a></li>
+        <li><a href="<?php echo site_url('home/contactPage');?>">Contact</a></li>
+      
       </ul>
+
     </div>
+
   </div>
 </nav>
 

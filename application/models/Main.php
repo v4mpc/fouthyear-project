@@ -84,7 +84,7 @@ public function getJobseekerInfo()
 $username=$_SESSION['username'];
 $SID=$this->get_SID();
 $_SESSION['SID']=$SID;
-$query_userinfo="SELECT registerJobSeeker.firstName, registerJobSeeker.lastName,accountInfo.username ,registerJobSeeker.region, registerJobSeeker.district ,registerJobSeeker.DOB ,registerJobSeeker.fieldOfStudy, registerJobSeeker.email FROM registerJobSeeker INNER JOIN accountInfo ON registerJobSeeker.accountID = accountInfo.accountID WHERE accountInfo.username='$username'";
+$query_userinfo="SELECT registerJobSeeker.firstName, registerJobSeeker.lastName,accountInfo.userName ,registerJobSeeker.region, registerJobSeeker.district ,registerJobSeeker.DOB ,registerJobSeeker.fieldOfStudy, registerJobSeeker.email FROM registerJobSeeker INNER JOIN accountInfo ON registerJobSeeker.accountID = accountInfo.accountID WHERE accountInfo.username='$username'";
 $result_userinfo=$this->db->query($query_userinfo);
 return $result_userinfo;
 }
@@ -139,15 +139,6 @@ public function getJobPost()
 
 public function getEmployerInfo()
 {
-
-	//set EID
-
-
-
-
-
-
-
 $username=$_SESSION['username'];
 $result_EID=$this->get_EID();
 $_SESSION['EID']=$result_EID;
@@ -400,8 +391,64 @@ return $result_jobApplications;
 
 }
 
+public function set_edit_Employer($data_employer1,$data_employer2)
+{
+$usernamenew=$data_employer1['userName'];
+$password=$data_employer1['password'];
+$username=$_SESSION['username'];
+$query_edit_accountinfo="UPDATE accountInfo SET userName='$usernamenew' ,password='$password' WHERE userName='$username'";
+
+$this->db->query($query_edit_accountinfo);
+$_SESSION['username']=$usernamenew;
+$result_EID=$this->get_EID();
+	$companyName=$data_employer2['companyName'];
+
+	$email=$data_employer2['emailE'];
+	$region=$data_employer2['regionE'];
+	$district=$data_employer2['districtE'];
+
+	$website=$data_employer2['website'];
+	$founded=$data_employer2['founded'];
+	$size=$data_employer2['size'];
+	$query_edit_e="UPDATE registerEmployer SET companyName='$companyName',emailE='$email',regionE='$region',districtE='$district',website='$website',founded='$founded',size= '$size' WHERE EID='$result_EID'";
+	$this->db->query($query_edit_e);
+	//
+}
 
 
+public function set_edit_Jobseeker($data_jobseeker1,$data_jobseeker2)
+{
+
+	$usernamenew=$data_jobseeker1['userName'];
+	$password=$data_jobseeker1['password'];
+	$username=$_SESSION['username'];
+	$query_edit_accountinfo="UPDATE accountInfo SET userName='$usernamenew' ,password='$password' WHERE userName='$username'";
+
+	$this->db->query($query_edit_accountinfo);
+	$_SESSION['username']=$usernamenew;
+	$result_SID=$this->get_SID();
+		$firstname=$data_jobseeker2['firstName'];
+		$email=$data_jobseeker2['email'];
+		$region=$data_jobseeker2['region'];
+		$district=$data_jobseeker2['district'];
+		$lastname=$data_jobseeker2['lastName'];
+		$DOB=$data_jobseeker2['DOB'];
+		$fieldOfStudy=$data_jobseeker2['fieldOfStudy'];
+		$query_edit_s="UPDATE registerJobSeeker SET firstName='$firstname',lastName='$lastname',email='$email',region='$region',district='$district',DOB='$DOB',FieldOfStudy='$fieldOfStudy' WHERE SID='$result_SID'";
+		$this->db->query($query_edit_s);
+
+}
+
+
+
+
+
+public function unsetUser($userId)
+{
+
+/*$aid=$userId;
+$query_unset*/
+}
 
 
 }

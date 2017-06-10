@@ -1,13 +1,13 @@
 <?php include 'header.php'; ?>
-
+<?php echo $status; ?>
 <div class="container-fluid text-left">
   <div class="row content">
     <div class="col-sm-2 col-sm-offset-1">
               <div class="list-group">
-                 <a href="<? echo site_url('userProfile/getSeekerJobPost');?>" class="list-group-item  <?php echo $put_active4;?>"> <span class="glyphicon glyphicon-th-list"></span> Job Posts</a>
-               <a href="<? echo site_url('userProfile/jobseekerInfo');?>" class="list-group-item <?php echo $put_active1;?>"> <span class="glyphicon glyphicon-user"></span>  User Profile</a>
-               <a href="<? echo site_url('userProfile/appliedJobs');?>" class="list-group-item <?php echo $put_active3;?>"> <span class="glyphicon glyphicon-play"></span>  Applied Jobs</a>
-               
+                 <a href="<?php echo site_url('userProfile/getSeekerJobPost');?>" class="list-group-item  <?php echo $put_active4;?>"> <span class="glyphicon glyphicon-th-list"></span> Job Posts</a>
+               <a href="<?php echo site_url('userProfile/jobseekerInfo/1');?>" class="list-group-item <?php echo $put_active1;?>"> <span class="glyphicon glyphicon-user"></span>  User Profile</a>
+               <a href="<?php echo site_url('userProfile/appliedJobs');?>" class="list-group-item <?php echo $put_active3;?>"> <span class="glyphicon glyphicon-play"></span>  Applied Jobs</a>
+
                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span>   Recommeded Jobs</a>
                <a href="<?php echo site_url('userProfile/myCv');?>" class="list-group-item <?php echo $put_active2;?>"> <span class="glyphicon glyphicon-list-alt"></span> My Resume</a>
 

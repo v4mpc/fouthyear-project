@@ -35,6 +35,7 @@ $config['validateJs']='assets/formValidate/lib/jquery-1.11.1.js';
 $config['customeJs']='assets/customeJs.js';
 $config['chartJs']='assets/MDB/js/mdb.min.js';
 $config['w3Css']='assets/w3/w3.css';
+$config['favicon']='assets/weblogo.png';
 
 
 

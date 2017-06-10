@@ -2,38 +2,6 @@
 <?php include 'header.php'; ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content jobseeker-->
@@ -56,14 +24,27 @@
               <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" />
             </div>
           </div>
+          <div class="form-group">
+          <label for="gender" class="col-sm-4 control-label">Gender</label>
+            <div class="col-sm-8 " role="group">
+            <label class="radio-inline"><input type="radio" value="M" name="gender">Male</label>
+            <label class="radio-inline"><input type="radio" value="F" name="gender">Female</label>
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="col-sm-4 control-label" for="userName">Username</label>
             <div class="col-sm-5">
-
           <input type="text" class="form-control" class="username" onblur="myFunction()" name="userName" placeholder="Username" />
           <p id="d">
           </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="fieldofstudy">Field of Study</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="fieldofstudy" name="fieldOfStudy" placeholder="e.g computer engineering" />
             </div>
           </div>
 
@@ -112,7 +93,7 @@
           <div class="form-group">
             <label for="DOB" class="col-sm-4 control-label">Date of Birth</label>
             <div class="col-md-5">
-              <input type="text" value="02-16-2012" id="datepicker" name="DOB" placeholder="month-day-year">
+              <input type="text" class="form-control" value="02-16-2012" id="datepicker" name="DOB" placeholder="month-day-year">
             </div>
           </div>
 
@@ -145,6 +126,38 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 /*$.validator.setDefaults( {
 submitHandler: function () {
@@ -234,7 +247,6 @@ $( document ).ready( function () {
 } );
 </script>
 
-<!-- Modal employer -->
 <div id="myModal1" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content employer-->
@@ -244,11 +256,32 @@ $( document ).ready( function () {
         <h4 class="modal-title">Register Employer</h4>
       </div>
       <div class="modal-body">
-        <form id="signupForm" method="post" class="form-horizontal" action="home/register_employer">
+        <form id="signupForm" method="post" class="form-horizontal" action="<?php echo site_url('/home/register_employer');?>">
           <div class="form-group">
             <label class="col-sm-4 control-label" for="company name">Company name</label>
             <div class="col-sm-5">
               <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="size">Size</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="size" name="size" placeholder="comapany size" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="company name">Website</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="website" name="website" placeholder="website" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="Founded">Founded</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="founded" name="founded" placeholder="Year Founded" />
             </div>
           </div>
 
@@ -489,7 +522,7 @@ $( document ).ready( function () {
                <a href="<?php echo site_url('userProfile/adminStatistics');?>" class="list-group-item <?php echo $put_active1;?> "> <span class="glyphicon glyphicon-stats"></span> Statistics</a>
              <a href="<?php echo site_url('userProfile/editEmployer');?>" class="list-group-item <?php echo $put_active2;?>"> <span class="glyphicon glyphicon-user"></span>  Employers</a>
 <a href="<?php echo site_url('userProfile/editJobseeker');?>" class="list-group-item <?php echo $put_active3;?>"> <span class="glyphicon glyphicon-user"></span>  Job Seekers</a>
-             <a href="<?php echo site_url('userProfile/editPostedJobs');?>" class="list-group-item"> <span class="glyphicon glyphicon-th-list<?php echo $put_active4;?>"></span> Posted Jobs</a>
+             <a href="<?php echo site_url('userProfile/editPostedJobs');?>" class="list-group-item <?php echo $put_active4;?>"> <span class="glyphicon glyphicon-th-list "></span> Posted Jobs</a>
 
 
               <a href="<?php echo site_url('userProfile/locationForm');?>" class="list-group-item <?php echo $put_active5;?>"><span class="glyphicon glyphicon-plus"></span>   Add New Job location</a>

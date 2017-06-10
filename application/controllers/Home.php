@@ -12,6 +12,7 @@ class Home extends CI_Controller{
  	$this->data['formValidateJs']=$this->config->item('formValidateJs');
  	$this->data['validateJs']=$this->config->item('validateJs');
   $this->data['chartJs']=$this->config->item('chartJs');
+  $this->data['favicon']=$this->config->item('favicon');
 
  	$this->load->model('main');
   $this->load->helper('url');
@@ -284,7 +285,7 @@ $this->data['statusHtml']=$statusHtml;
         $_SESSION['username']=$userLogin['userName'];
         $_SESSION['accountID']=$userLogin['accountID'];
         $_SESSION['accountType']=$userLogin['accountType'];
-       redirect(site_url('/userProfile/jobseekerInfo'));
+       redirect(site_url('/userProfile/jobseekerInfo/1'));
       //echo true;
 
     }elseif ($userLogin['accountType']=="Admin") {
@@ -406,7 +407,9 @@ $this->load->view('contactPage',$this->data);
 
 public function aboutPage()
 {
-$this->load->view('aboutPage',$this->data);
+
+
+$this->load->view('aboutPagenew',$this->data);
 }
 
 
