@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="<?php echo $base."/".$customeCss; ?>">
   <script src="<?php echo $base."/".$datepickerJs; ?> "></script>
   <link rel="stylesheet" href="<?php echo $base."/".$datepickerCss; ?>">
-  
 
   <script type="text/javascript"  src="<?php echo base_url($chartJs);?>"></script>
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -212,99 +211,6 @@
   border-radius: 50%;
   overflow: hidden;
   text-align: center;
-  
-  }
-  
-  body {
-    margin-top:40px;
-}
-.stepwizard-step p {
-    margin-top: 10px;
-}
-.stepwizard-row {
-    display: table-row;
-}
-.stepwizard {
-    display: table;
-    width: 50%;
-    position: relative;
-}
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
-}
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
-}
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-	
-	
-	
-	button:last-of-type {
-  margin: 0;
-}
-
-p.borderBelow {
-  margin: 0 0 20px 0;
-  padding: 0 0 20px 0;
-}
-
-video {
-  height: 232px;
-  margin: 0 12px 20px 0;
-  vertical-align: top;
-  width: calc(20em - 10px);
-}
-
-
-video:last-of-type {
-  margin: 0 0 20px 0;
-}
-
-video#gumVideo {
-  margin: 0 20px 20px 0;
-}
-
-@media screen and (max-width: 500px) {
-  button {
-    font-size: 0.8em;
-    width: calc(33% - 5px);
-  }
-}
-
-@media screen and (max-width: 720px) {
-  video {
-    height: calc((50vw - 48px) * 3 / 4);
-    margin: 0 10px 10px 0;
-    width: calc(50vw - 48px);
-  }
-
-  video#gumVideo {
-    margin: 0 10px 10px 0;
-  }
-}
-
-  
-  
 }
 
 
@@ -323,7 +229,9 @@ video#gumVideo {
 
 
 
+  <style>
 
+  </style>
 
   <script>
   $(document).ready(function(){
@@ -342,217 +250,9 @@ video#gumVideo {
   });
 
 
-  var navListItems = $('div.setup-panel div a'),
-          allWells = $('.setup-content'),
-          allNextBtn = $('.nextBtn'),
-  		  allPrevBtn = $('.prevBtn');
-
-  allWells.hide();
-
-  navListItems.click(function (e) {
-      e.preventDefault();
-      var $target = $($(this).attr('href')),
-              $item = $(this);
-
-      if (!$item.hasClass('disabled')) {
-          navListItems.removeClass('btn-primary').addClass('btn-default');
-          $item.addClass('btn-primary');
-          allWells.hide();
-          $target.show();
-          $target.find('input:eq(0)').focus();
-      }
-  });
-  
-  allPrevBtn.click(function(){
-      var curStep = $(this).closest(".setup-content"),
-          curStepBtn = curStep.attr("id"),
-          prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
-          prevStepWizard.removeAttr('disabled').trigger('click');
-  });
-
-  allNextBtn.click(function(){
-      var curStep = $(this).closest(".setup-content"),
-          curStepBtn = curStep.attr("id"),
-          nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-          curInputs = curStep.find("input[type='text'],input[type='url']"),
-          isValid = true;
-
-      $(".form-group").removeClass("has-error");
-      for(var i=0; i<curInputs.length; i++){
-          if (!curInputs[i].validity.valid){
-              isValid = false;
-              $(curInputs[i]).closest(".form-group").addClass("has-error");
-          }
-      }
-
-      if (isValid)
-          nextStepWizard.removeAttr('disabled').trigger('click');
-  });
-
-  $('div.setup-panel div a.btn-primary').trigger('click');
-  
-  
-  
-  
-  //recorder
-  var mediaSource = new MediaSource();
-mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
-var mediaRecorder;
-var recordedBlobs;
-var sourceBuffer;
-
-var gumVideo = document.querySelector('video#gum');
-var recordedVideo = document.querySelector('video#recorded');
-
-var recordButton = document.querySelector('button#record');
-var playButton = document.querySelector('button#play');
-var downloadButton = document.querySelector('button#download');
-recordButton.onclick = toggleRecording;
-playButton.onclick = play;
-downloadButton.onclick = download;
-
-// window.isSecureContext could be used for Chrome
-var isSecureOrigin = location.protocol === 'https:' ||
-location.hostname === 'localhost';
-if (!isSecureOrigin) {
-  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
-    '\n\nChanging protocol to HTTPS');
-  location.protocol = 'HTTPS';
-}
-
-var constraints = {
-  audio: true,
-  video: true
-};
-
-function handleSuccess(stream) {
-  recordButton.disabled = false;
-  console.log('getUserMedia() got stream: ', stream);
-  window.stream = stream;
-  if (window.URL) {
-    gumVideo.src = window.URL.createObjectURL(stream);
-  } else {
-    gumVideo.src = stream;
-  }
-}
-
-function handleError(error) {
-  console.log('navigator.getUserMedia error: ', error);
-}
-
-navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
-
-function handleSourceOpen(event) {
-  console.log('MediaSource opened');
-  sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
-  console.log('Source buffer: ', sourceBuffer);
-}
-
-recordedVideo.addEventListener('error', function(ev) {
-  console.error('MediaRecording.recordedMedia.error()');
-  alert('Your browser can not play\n\n' + recordedVideo.src
-    + '\n\n media clip. event: ' + JSON.stringify(ev));
-}, true);
-
-function handleDataAvailable(event) {
-  if (event.data && event.data.size > 0) {
-    recordedBlobs.push(event.data);
-  }
-}
-
-function handleStop(event) {
-  console.log('Recorder stopped: ', event);
-}
-
-function toggleRecording() {
-  if (recordButton.textContent === 'Start Recording') {
-    startRecording();
-  } else {
-    stopRecording();
-    recordButton.textContent = 'Start Recording';
-    playButton.disabled = false;
-    downloadButton.disabled = false;
-  }
-}
-
-function startRecording() {
-  recordedBlobs = [];
-  var options = {mimeType: 'video/webm;codecs=vp9'};
-  if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-    console.log(options.mimeType + ' is not Supported');
-    options = {mimeType: 'video/webm;codecs=vp8'};
-    if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-      console.log(options.mimeType + ' is not Supported');
-      options = {mimeType: 'video/webm'};
-      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-        console.log(options.mimeType + ' is not Supported');
-        options = {mimeType: ''};
-      }
-    }
-  }
-  try {
-    mediaRecorder = new MediaRecorder(window.stream, options);
-  } catch (e) {
-    console.error('Exception while creating MediaRecorder: ' + e);
-    alert('Exception while creating MediaRecorder: '
-      + e + '. mimeType: ' + options.mimeType);
-    return;
-  }
-  console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-  recordButton.textContent = 'Stop Recording';
-  playButton.disabled = true;
-  downloadButton.disabled = true;
-  mediaRecorder.onstop = handleStop;
-  mediaRecorder.ondataavailable = handleDataAvailable;
-  mediaRecorder.start(10); // collect 10ms of data
-  console.log('MediaRecorder started', mediaRecorder);
-}
-
-function stopRecording() {
-  mediaRecorder.stop();
-  console.log('Recorded Blobs: ', recordedBlobs);
-  recordedVideo.controls = true;
-}
-
-function play() {
-  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-  recordedVideo.src = window.URL.createObjectURL(superBuffer);
-}
-
-function download() {
-  var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  var url = window.URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.style.display = 'none';
-  a.href = url;
-  a.download = 'test.webm';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() {
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }, 100);
-}
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-});
-  
-  //
-  
 
 
-       
+        } );
 
 
 

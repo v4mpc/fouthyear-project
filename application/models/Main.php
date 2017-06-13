@@ -114,34 +114,24 @@ public function getSession($data)
 	$results_session_get=$this->db->query($query_session_get);
 
 	//database hit/miss
-/*$loginDate=date("Y-m-d H:i:s");
+$loginDate=date("Y-m-d H:i:s");
 $correct_ip_address=$_SERVER['REMOTE_ADDR'];
 	if($results_session_get->num_rows()==1){
-//$queryHit="INSERT INTO dbHit(ipAddrress, userName, password, loginTime, loginStatus) VALUES ('$correct_ip_address','$username','$password','$loginDate','Success')";
+$queryHit="INSERT INTO dbHit(ipAddrress, userName, password, loginTime, loginStatus) VALUES ('$correct_ip_address','$username','$password','$loginDate','Success')";
 $this->db->query($queryHit);
 	}else{
-		//$queryMiss="INSERT INTO dbHit(ipAddrress, userName, password, loginTime, loginStatus) VALUES //('$correct_ip_address','$username','$password','$loginDate','Failed')";
+		$queryMiss="INSERT INTO dbHit(ipAddrress, userName, password, loginTime, loginStatus) VALUES ('$correct_ip_address','$username','$password','$loginDate','Failed')";
 		$this->db->query($queryMiss);
-	}*/
+	}
 	return $results_session_get;
 }
-public function getJobPost($data)
+public function getJobPost()
 {
-		if(empty($data['jobID'])){
-		$query_jobPost="SELECT registerEmployer.companyName,registerEmployer.regionE, registerEmployer.districtE, registerEmployer.logo, registerEmployer.website, registerEmployer.size, registerEmployer.industryType, registerEmployer.revenue, registerEmployer.founded, job_Post.jobTitle, job_Post.jobID, job_Post.discription, job_Post.postDate,job_Post.salary, job_Post.onlineInterview FROM registerEmployer INNER JOIN job_Post ON registerEmployer.EID=job_Post.EID";
+		$query_jobPost="SELECT registerEmployer.companyName,registerEmployer.regionE, registerEmployer.districtE, registerEmployer.logo, registerEmployer.website, registerEmployer.size, registerEmployer.industryType, registerEmployer.revenue, registerEmployer.founded, job_Post.jobTitle, job_Post.discription, job_Post.postDate,job_Post.salary, job_Post.onlineInterview FROM registerEmployer INNER JOIN job_Post ON registerEmployer.EID=job_Post.EID";
 	$result_jobPost=$this->db->query($query_jobPost);
 
 	//$jobPosts=$result_jobPost->result();
 	return $result_jobPost;
-
-		}else{
-
-			$jobID=$data['jobID'];
-			$query_jobPost="SELECT registerEmployer.companyName,registerEmployer.regionE, registerEmployer.districtE, registerEmployer.logo, registerEmployer.website, registerEmployer.size, registerEmployer.industryType, registerEmployer.revenue, registerEmployer.founded, job_Post.jobTitle, job_Post.discription, job_Post.postDate,job_Post.salary, job_Post.onlineInterview FROM registerEmployer INNER JOIN job_Post ON registerEmployer.EID=job_Post.EID WHERE job_Post.jobID='$jobID'";
-	$result_jobPost=$this->db->query($query_jobPost);
-	return $result_jobPost;
-
-		}
 }
 
 
@@ -381,7 +371,7 @@ public function getlogins()
 public function getSearch($data)
 {
 	$searchName=$this->data['searchName'];
-	$query_searchName="SELECT registerEmployer.companyName,registerEmployer.regionE,job_Post.jobID, registerEmployer.districtE, registerEmployer.logo, registerEmployer.website, registerEmployer.size, registerEmployer.industryType, registerEmployer.revenue, registerEmployer.founded, job_Post.jobTitle, job_Post.discription, job_Post.postDate,job_Post.salary, job_Post.onlineInterview FROM registerEmployer INNER JOIN job_Post ON registerEmployer.EID=job_Post.EID WHERE job_Post.jobTitle='$searchName'";
+	$query_searchName="SELECT registerEmployer.companyName,registerEmployer.regionE, registerEmployer.districtE, registerEmployer.logo, registerEmployer.website, registerEmployer.size, registerEmployer.industryType, registerEmployer.revenue, registerEmployer.founded, job_Post.jobTitle, job_Post.discription, job_Post.postDate,job_Post.salary, job_Post.onlineInterview FROM registerEmployer INNER JOIN job_Post ON registerEmployer.EID=job_Post.EID WHERE job_Post.jobTitle='$searchName'";
 	$result_searchName=$this->db->query($query_searchName);
 	return $result_searchName;
 }

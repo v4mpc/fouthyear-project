@@ -427,200 +427,55 @@ class UserProfile extends CI_Controller
 
 
 			}else {
-				$post_html='<div class="stepwizard col-md-offset-3">
-    <div class="stepwizard-row setup-panel">
-      <div class="stepwizard-step">
-        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-        <p>Step 1</p>
-      </div>
-      <div class="stepwizard-step">
-        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-        <p>Step 2</p>
-      </div>
-      <div class="stepwizard-step">
-        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-        <p>Step 3</p>
-      </div>
-    </div>
-  </div>
+				$post_html='<div class="panel-group"><div class="panel panel-default"><div class="panel-heading">Post Job</div>
+				<div class="panel-body"><form id="post" method="post" class="form-horizontal" action="'.site_url('userProfile/doPost').'">
+				<div class="form-group">
+				<label class="col-sm-4 control-label" for="jobtitle">Job title</label>
+				<div class="col-sm-5">
+				<input type="text" class="form-control" id="" name="jobTitle" placeholder="Job title" required />
+				</div>
+				</div>
+				<div class="form-group">
+				<label for="JDescription" class="col-sm-4 control-label">Job Description</label>
+				<div class="col-sm-8">
+				<textarea required class="form-control" name="JDescription" rows="4" placeholder="Describe the Job in brief..."></textarea>
+				</div>
+				</div>
+
+				<div class="form-group">
+				<label class="col-sm-4 control-label" for="salary">Salary</label>
+				<div class="col-sm-5">
+				<input required required type="text" class="form-control" id="" name="salary" placeholder="Salary in Tshs" />
+				</div>
+				</div>
+
+				<div class="form-group">
+				<label for="skillsAndExperience" class="col-sm-4 control-label">Skills and Expirience</label>
+				<div class="col-md-8">
+				<textarea required class="form-control" name="skillsAndExperience" rows="4" placeholder="State required qualifcations..."></textarea>
+				</div>
+				</div>
+
+				<div class="form-group">
+				<label for="interview" class="col-sm-4 control-label">Interview</label>
+				<div class="col-sm-8 " role="group">
+				<label class="radio-inline"><input type="radio" value="Yes" name="interview">Yes</label>
+				<label class="radio-inline"><input type="radio" value="No" name="interview">No</label>
+				</div>
+				</div>
+
+				<div class="form-group">
+				<div class="col-sm-5 col-sm-offset-7">
+				<button type="submit" class="btn btn-primary" id="button1"value=" "><span class="glyphicon glyphicon-share"> Post</span></button>
+				</div>
+				</div>
 
 
 
- <form id="post" method="post" class="form-horizontal" action="'.site_url('userProfile/doPost').'">
-    <div class="row setup-content" id="step-1">
-	<div class="panel-group">
-							<div class="panel panel-default">
-
-									<div class="panel-body">
-      <div class="col-xs-6 col-md-offset-3">
-        <div class="col-md-12">
-          <h3> Job Details</h3>
-
-												<div class="form-group">
-													<label class=" control-label" for="jobtitle">Job title</label>
-													<div >
-														<input type="text" class="form-control" id="" name="jobTitle" placeholder="Job title" required />
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label for="JDescription" class=" control-label">Job Description</label>
-													<div>
-														<textarea required class="form-control" name="JDescription" rows="4" placeholder="Describe the Job in brief..."></textarea>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class=" control-label" for="salary">Salary</label>
-														<div >
-															<input required type="text" class="form-control" id="" name="salary" placeholder="Salary in Tshs" />
-														</div>
-												</div>
-
-												<div class="form-group">
-													<label for="skillsAndExperience" class=" control-label">Skills and Expirience</label>
-													<div class="">
-														<textarea required class="form-control" name="skillsAndExperience" rows="4" placeholder="State required qualifcations..."></textarea>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label for="interview" class=" control-label">Interview</label>
-													<div class="" role="group">
-														<label class="radio-inline"><input type="radio" value="Yes" name="interview">Yes</label>
-														<label class="radio-inline"><input type="radio" value="No" name="interview">No</label>
-													</div>
-												</div>
-
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
-        </div>
-      </div>
-
-	  </div>
-      </div>
-
-
-		</div>
-
-    </div>
-
-
-
-
-
-<div class="container">
-
-    <div class="row setup-content" id="step-2">
-
-		<div class="panel-group">
-							<div class="panel panel-default">
-
-									<div class="panel-body">
-
-
-
-									<div class="col-xs-6 col-md-offset-3">
-						        <div class="col-md-12">
-
-
-          <h3> Set Interview</h3>
-          <div class="form-group">
-											<label  control-label" for="question">Question 1</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question1" placeholder="question 1" required />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 2</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question2" placeholder="question 2" required />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 3</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question3" placeholder="question 3" />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 4</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question4" placeholder="question 4"  />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 5</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question5" placeholder="question 5"  />
-												</div>
-										</div>
-
-										<div class="form-group">
-											<label  control-label" for="question">Question 6</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question6" placeholder="question 6"/>
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 7</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question7" placeholder="question 7"  />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 8</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question8" placeholder="question 8"  />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 9</label>
-												<div>
-												<input type="text" class="form-control" id="" name="question9" placeholder="question 9"  />
-												</div>
-										</div>
-										<div class="form-group">
-											<label  control-label" for="question">Question 10</label>
-												<div>
-													<input type="text" class="form-control" id="" name="question10" placeholder="question 10" />
-												</div>
-											</div>
-
-          <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
-        </div>
-      </div>
-		</div>
-		</div>
-      </div>
-			</div>
-	      </div>
-
-
-
-
-
-
-
-
-    <div class="row setup-content" id="step-3">
-	<div class="panel-group">
-							<div class="panel panel-default">
-
-									<div class="panel-body">
-      <div class="col-xs-6 col-md-offset-3">
-        <div class="col-md-12">
-          <h3> Finish</h3>
-          <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
-        </div>
-      </div>
-    </div>
-	</div>
-      </div>
-    </div>
-  </form>
-';
+				</form>
+				</div>
+				</div>
+				</div>';
 
 
 
@@ -787,9 +642,7 @@ class UserProfile extends CI_Controller
 
 	public function getSeekerJobPost()
 	{
-
-		$data['jobID']='';
-		$jobPosts=$this->main->getJobPost($data);
+		$jobPosts=$this->main->getJobPost();
 		//$jobPosts=$jobPosts->row_array();
 		//  $this->data['jobPosts']=$jobPosts;
 
@@ -812,11 +665,10 @@ class UserProfile extends CI_Controller
 				$industry=$jobPost->industryType;
 				$crevenue=$jobPost->revenue;
 				$cfounded=$jobPost->founded;
-				$jobtitle=$jobPost->jobTitle;
+				$jobtitle=strtolower($jobPost->jobTitle);
 				$jdiscription=$jobPost->discription;
 				$postdate=$jobPost->postDate;
 				$jsalary=$jobPost->salary;
-				$jobID=$jobPost->jobID;
 				//  $post=$jobPost->skillsAndExperience;
 				$interview=$jobPost->onlineInterview;
 
@@ -826,41 +678,6 @@ class UserProfile extends CI_Controller
 
 
 
-
-				$jobPost_html.='<div class="panel panel-default">
-				<div class="panel-body"><h2 id="jobtitle'.$counter.'">'.$jobtitle.'</h2>
-				<div class="media">
-				<div class="media-left media-top">
-				<img src="'.$this->data['base'].'/'.$companylogo.'" class="media-object" style="width:80px">
-				</div>
-				<div class="media-body">
-				<h4 class="media-heading"><span id="companyname'.$counter.'">'.$companyname.'</span><small> -'.$regione.', '.$districte.'</small></h4>
-				<h4><small><i>posted '.$postdate.'</i></small></h4>
-				</div>
-
-
-				</div>
-
-				<div class="col-sm-2" id="apply" >
-				<a class="btn btn-info btn-sm" href="'.site_url('userProfile/jobDetail/'.$jobID).'">
-				<span class="glyphicon glyphicon-list"></span> View details
-				</a>
-				</div>
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-				';
-
-
-				/*
 
 				$jobPost_html.='<div class="panel panel-default">
 				<div class="panel-body"><h2 id="jobtitle'.$counter.'">'.$jobtitle.'</h2>
@@ -962,11 +779,6 @@ class UserProfile extends CI_Controller
 
 
 
-				*/
-
-
-
-
 
 
 				$counter=$counter+1;
@@ -999,226 +811,6 @@ class UserProfile extends CI_Controller
 		}
 	}
 
-public function jobDetail($jobID)
-	{
-
-
-		$this->data['jobID']=$jobID;
-		$jobPosts=$this->main->getJobPost($this->data);
-		//$jobPosts=$jobPosts->row_array();
-		//  $this->data['jobPosts']=$jobPosts;
-
-		//$jobsApplied=$this->main->getApplications();
-		//$jobsApplied=$jobsApplied->row_array();
-
-		//$newjobPosts=array_diff($jobsApplied,$jobPosts);
-
-		if ($jobPosts->num_rows()>0) {
-			$jobPost_html='';
-			$counter=1;
-			foreach ($jobPosts->result() as $jobPost) {
-				$companyname=$jobPost->companyName;
-				//$post=$jobPost->emailE;
-				$regione=$jobPost->regionE;
-				$districte=$jobPost->districtE;
-				$companylogo=$jobPost->logo;
-				$cwebsite=$jobPost->website;
-				$csize=$jobPost->size;
-				$industry=$jobPost->industryType;
-				$crevenue=$jobPost->revenue;
-				$cfounded=$jobPost->founded;
-				$jobtitle=$jobPost->jobTitle;
-				$jdiscription=$jobPost->discription;
-				$postdate=$jobPost->postDate;
-				$jsalary=$jobPost->salary;
-				//  $post=$jobPost->skillsAndExperience;
-				$interview=$jobPost->onlineInterview;
-
-
-
-
-
-
-
-
-
-
-				$jobPost_html.='<div class="panel panel-default">
-				<div class="panel-body"><h2 id="jobtitle'.$counter.'">'.$jobtitle.'</h2>
-				<div class="media">
-				<div class="media-left media-top">
-				<img src="'.$this->data['base'].'/'.$companylogo.'" class="media-object" style="width:80px">
-				</div>
-				<div class="media-body">
-				<h4 class="media-heading"><span id="companyname'.$counter.'">'.$companyname.'</span><small> -'.$regione.', '.$districte.'</small></h4>
-				<h4><small><i>posted '.$postdate.'</i></small></h4>
-				</div>
-				</div>
-				<div id="discription">
-				<h4><b>Description</b></h4><hr>
-				'.$jdiscription.'
-				</div><br>
-				<div class="row">
-				<div class="col-sm-6">
-				<h5><b>Estimated salary: </b>'.$jsalary.' Tshs</h5>
-				</div>
-
-				<div class="col-sm-6">
-				<h5 ><b>Online interview: </b><span class="text-info">'.$interview.'</span></h5>
-				</div>
-
-				</div><br>
-				<h4><b>Company Information</b></h4><hr>
-				<div class="row">
-				<div class="col-sm-6">
-				<h5><b>Website: </b><a href="'.$cwebsite.'">'.$cwebsite.'</a></h5>
-				</div>
-				<div class="col-sm-6">
-				<h5><b>Headquaters: </b>'.$regione.', '.$districte.'</h5>
-				</div>
-
-				</div>
-
-				<div class="row">
-				<div class="col-sm-6">
-				<h5><b>Size: </b>'.$csize.' employees</h5>
-				</div>
-				<div class="col-sm-6">
-				<h5><b>Revenue: </b>'.$crevenue.' Millions Tshs per year</h5>
-				</div>
-				</div>
-
-				<div class="row">
-				<div class="col-sm-6">
-				<h5><b>Industry: </b>'.$industry.'</h5>
-				</div>
-				<div class="col-sm-6">
-				<h5><b>Founded: </b>'.$cfounded.'</h5>
-
-
-
-				<form method="post" action="'.site_url('userProfile/Interview').'">
-				<input type="hidden" name="jobId">
-				<div class="col-sm-2" id="interview" >
-				<button type="submit" class="btn btn-primary btn-md" id="button'.$counter.'" name="apply" value="apply"><span class="glyphicon glyphicon-play"></span>  Perform Interview</button>
-			</form>
-				</div>
-
-				</div>
-
-
-
-
-				</div>
-
-
-				</div></div>
-
-				<script>
-
-
-
-
-
-
-				$("#button'.$counter.'").on("click",function () {
-					var jobtitle=$("#jobtitle'.$counter.'").text();
-					var companyname=$("#companyname'.$counter.'").text();
-
-
-
-
-					$.post(\''.site_url('userProfile/apply').'\', {jobTitle:jobtitle,companyName:companyname});
-
-
-
-				});
-
-
-				</script>
-
-
-
-
-
-
-
-				';
-
-
-
-
-
-
-
-
-
-
-
-				$counter=$counter+1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			}
-
-
-			$this->data['put_active1']='';
-			$this->data['put_active2']='';
-			$this->data['put_active3']='';
-			$this->data['put_active4']='active';
-			$this->data['put_active5']="";
-			$this->data['jobseekerinfos_html']=$jobPost_html;
-			$this->load->view('jobSeekerHomePagenew',$this->data);
-		}
-	}
-
-
-
-
-
-	public function Interview(){
-
-
-		for ($i=1;$i<10; $i++){
-		$interview_html='<div class="panel panel-default">
-
-				<div class="panel-body"><video id="gum" autoplay muted></video>
-    <video id="recorded" autoplay loop></video>
-
-    <div>
-      <button id="record" disabled>Start Recording</button>
-      <button id="play" disabled>Play</button>
-      <button id="download" disabled>Download</button>
-    </div></div></div>';
-			$this->data['put_active1']='';
-			$this->data['put_active2']='';
-			$this->data['put_active3']='';
-			$this->data['put_active4']='active';
-			$this->data['put_active5']="";
-			$this->data['jobseekerinfos_html']=$interview_html;
-			$this->load->view('jobSeekerHomePagenew',$this->data);
-
-
-
-		}
-
-
-
-
-	}
 
 
 	public function apply()

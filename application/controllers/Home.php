@@ -123,9 +123,10 @@ $this->data['district_html']=$this->getDistrict();
 
 
 
+//post job home page
 
-//  $jobPosts=$this->main->getJobPost();
-  //$this->data['jobPosts']=$jobPosts->result();;
+  $jobPosts=$this->main->getJobPost();
+  $this->data['jobPosts']=$jobPosts->result();;
 /*  if ($jobPosts->num_rows()>0) {
  $jobPost_html='';
       foreach ($jobPosts->result() as $jobPost) {
@@ -222,12 +223,9 @@ $this->data['district_html']=$this->getDistrict();
 
     }
 
-  }*/
+  }
 
-
-  $jobPost_html='';
-
-$this->data['jobPost_html']=$jobPost_html;
+$this->data['jobPost_html']=$jobPost_html;*/
 $statusHtml='';
 $this->data['statusHtml']=$statusHtml;
 //redirect(site_url('/home/'));
@@ -455,7 +453,6 @@ public function search()
         $jdiscription=$searchResult->discription;
         $postdate=$searchResult->postDate;
         $jsalary=$searchResult->salary;
-        $jobID=$searchResult->jobID;
       //  $post=$searchResult->skillsAndExperience;
 
 
@@ -467,29 +464,44 @@ public function search()
 
         $interview=$searchResult->onlineInterview;
         $searchResult_html.='
-        <div class="panel panel-default">
-        <div class="panel-body"><h2 id="jobtitle'.$counter.'">'.$jobtitle.'</h2>
-        <div class="media">
-        <div class="media-left media-top">
-        <img src="'.$this->data['base'].'/'.$companylogo.'" class="media-object" style="width:80px">
-        </div>
-        <div class="media-body">
-        <h4 class="media-heading"><span id="companyname'.$counter.'">'.$companyname.'</span><small> -'.$regione.', '.$districte.'</small></h4>
-        <h4><small><i>posted '.$postdate.'</i></small></h4>
-        </div>
+          <div class="media">
+            <div class="media-left media-top">
+              <img src="'.$this->data['base'].'/'.$companylogo.'" class="media-object" style="width:150px">
+            </div>
+            <div class="media-body">
+            <h3 id="jobtitle'.$counter.'"><a>'.$jobtitle.'</a></h3>
+              <h4 class="media-heading"><span id="companyname'.$counter.'">'.$companyname.'</span><small> -'.$regione.', '.$districte.'</small></h4>
+              <h4><small><i>posted '.$postdate.'</i></small></h4>
+            </div>
+          </div><hr>
 
 
-        </div>
-
-        <div class="col-sm-2" id="apply" >
-        <a class="btn btn-info btn-sm" href="'.site_url('userProfile/jobDetail/'.$jobID).'">
-        <span class="glyphicon glyphicon-list"></span> View details
-        </a>
-        </div>
-</div>
 
 
-</div>
+
+                <script>
+
+
+
+
+
+
+                  $("#button'.$counter.'").on("click",function () {
+                  var jobtitle=$("#jobtitle'.$counter.'").text();
+                  var companyname=$("#companyname'.$counter.'").text();
+
+
+
+
+    $.post(\''.site_url('userProfile/apply').'\', {jobTitle:jobtitle,companyName:companyname});
+
+
+
+                });
+
+
+                  </script>
+
 
 
 
